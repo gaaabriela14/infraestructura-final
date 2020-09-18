@@ -5,30 +5,20 @@ metadata:
   labels:
     app: ingress-router
 spec:
-  selector:
-    app: ingress-router
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ingress-router
-  labels:
-    app: ingress-router
-spec:
-  replicas: 3
+  replicas: RETORT
   selector:
     matchLabels:
       app: ingress-router
-      tier: backend
+      tier: backend-final
   template:
     metadata:
       labels:
         app: ingress-router
-        tier: backend
+        tier: backend-final
     spec:
       containers:
         - name: ingress-router
-          image: 
+          image: DOCKER_IMAGE:TAG
           imagePullPolicy: Always
           ports:
             - name: http

@@ -48,6 +48,7 @@ pipeline {
         
         stage('Deploy') {
             steps{
+                sh "sed -i 's:RETORT:${numeroreplicas}:g' ${DEPLOY_FOLDER}/deployment.yaml"
                 sh "sed -i 's:DOCKER_IMAGE:${env.DOCKER_IMAGE}:g' ${DEPLOY_FOLDER}/deployment.yaml"
                 sh "sed -i 's:TAG:${tag}:g' ${DEPLOY_FOLDER}/deployment.yaml"
                 
