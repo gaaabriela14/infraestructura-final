@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-router
+  labels:
+    app: ingress-router
+spec:
+  selector:
+    app: ingress-router
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-router
+  labels:
+    app: ingress-router
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ingress-router
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: ingress-router
+        tier: backend
+    spec:
+      containers:
+        - name: ingress-router
+          image: 
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP

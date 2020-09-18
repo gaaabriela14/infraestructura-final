@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-final
+  labels:
+    app: frontend-final
+spec:
+  selector:
+    app: frontend-final
+  ports:
+    - protocol: TCP
+      port: 3000

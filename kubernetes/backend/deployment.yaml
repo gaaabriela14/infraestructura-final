@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-final
+  labels:
+    app: backend-final
+spec:
+  selector:
+    matchLabels:
+      app: backend-final
+  template:
+    metadata:
+      labels:
+        app: backend-final
+    spec:
+      containers:
+        - name: backend-final
+          image: DOCKER_IMAGE:TAG
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_name
+            - name: MONGO_HOST
+              value: mongo
+            - name: MONGO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: db_port
