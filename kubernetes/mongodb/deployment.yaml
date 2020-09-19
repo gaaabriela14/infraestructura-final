@@ -23,7 +23,7 @@ spec:
                   name: db-config
                   key: db_name
           volumeMounts:
-            - mountPath: /data/db
+            - mountPath: /var/lib/mongodb/data
               name: mongodb-volume-mount
               subPath: mongodb
       volumes:
