@@ -15,7 +15,7 @@ spec:
         app: backend-final
     spec:
       containers:
-        - name: backend-final
+        - name: backend
           image: DOCKER_IMAGE:TAG
           imagePullPolicy: Always
           ports:
