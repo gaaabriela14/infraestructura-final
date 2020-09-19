@@ -19,9 +19,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          env:
-            - name: API
-              valueFrom:
-                confingMapKeyRef: 
-                  name: frontend-config
-                  key: API
