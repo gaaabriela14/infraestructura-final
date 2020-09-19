@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mongodb-pv
+  name: mongo-pv
   labels:
-    name: mongodb-pv
+    name: mongo-pv
 spec:
   capacity:
     storage: 100M
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb-pvc
+  name: mongo-pvc
   labels:
     type: local
 spec:
@@ -26,4 +26,4 @@ spec:
   resources:
     requests:
       storage: 100M
-  volumeName: mongodb-pv
+  volumeName: mongo-pv

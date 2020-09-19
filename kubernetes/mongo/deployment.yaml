@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb
+  name: mongo
 spec:
   selector:
     matchLabels:
-      app: mongodb
+      app: mongo
   template:
     metadata:
       labels:
-        app: mongodb
+        app: mongo
     spec:
       containers:
-        - name: mongodb
-          image: mongodb
+        - name: mongo
+          image: mongo
           ports:
             - containerPort: 27017
           env:
@@ -23,10 +23,10 @@ spec:
                   name: db-config
                   key: db_name
           volumeMounts:
-            - mountPath: /var/lib/mongodb/data
-              name: mongodb-volume-mount
-              subPath: mongodb
+            - mountPath: /var/lib/mongo/data
+              name: mongo-volume-mount
+              subPath: mongo
       volumes:
-        - name: mongodb-volume-mount
+        - name: mongo-volume-mount
           persistentVolumeClaim:
-            claimName: mongodb-pvc
+            claimName: mongo-pvc
