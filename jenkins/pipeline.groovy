@@ -5,14 +5,14 @@ pipeline {
         APP_REPO_URL = "${env.BASE_GIT_URL}/${nombre_repositorio}.git"
         INFRA_REPO_URL = "${env.BASE_GIT_URL}/infraestructura-final.git"
         DOCKER_IMAGE = "gachu/${nombre_repositorio}"
-        DEPLOY_FOLDER = "deployf/kubernetes/${nombre_repositorio}"
+        DEPLOY_FOLDER = "deploy/kubernetes/${nombre_repositorio}"
     }
 
     agent any
     stages {
         stage("Checkout app-code") {
             steps {
-               dir('appf') {
+               dir('app') {
                     git url:"${env.APP_REPO_URL}" , branch: "${rama}"
                 } 
             }
@@ -20,7 +20,7 @@ pipeline {
          
          stage("Checkout deploy-code") {
             steps {
-               dir('deployf') {
+               dir('deploy') {
                     git url:"${env.INFRA_REPO_URL}" , branch: "master"
                 } 
             }
@@ -28,7 +28,7 @@ pipeline {
         
          stage("Build image") {
             steps {
-                dir('appf') {
+                dir('app') {
                     script {
                         dockerImage = docker.build("${env.DOCKER_IMAGE}:${tag}")
                     }
