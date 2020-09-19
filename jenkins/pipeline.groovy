@@ -1,7 +1,7 @@
 pipeline {
 
     environment {
-        BASE_GIT_URL = 'https://github.com/gabrielaaa14'
+        BASE_GIT_URL = 'https://github.com/gaaabriela14'
         APP_REPO_URL = "${env.BASE_GIT_URL}/${nombre_repositorio}.git"
         INFRA_REPO_URL = "${env.BASE_GIT_URL}/infraestructura-final.git"
         DOCKER_IMAGE = "gachu/${nombre_repositorio}"
